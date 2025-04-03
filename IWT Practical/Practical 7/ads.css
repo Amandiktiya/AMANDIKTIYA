@@ -1,0 +1,37 @@
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+/* Banner Ad Styles */
+#banner-ad {
+    top: 0px;
+    bottom: 0px;  position: sticky;
+    width: 100%;
+    height: 100px;  /* Adjust the height as per your design */
+    background-color: #e21818;
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 100px;
+border-image: round;
+
+}
+
+#banner-ad img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Main Content Styles */
+#main-content {
+    padding: 20px;
+}
+#one{
+position: static;
+}
+img{
+
+}

@@ -1,0 +1,30 @@
+table, th, td {
+    border-collapse: collapse;
+  }
+  th, td {
+    background-color: #96D4D4;
+    border-color: black;
+    border-style: groove;
+    text-align: center;
+    text-shadow: #fdfdfd;
+  }
+  section{
+        background: linear-gradient(to right, #caa4e4, #e38752);
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+    font-size: large;
+    
+  }
+ table{
+text-align: justify;
+text-indent: 1%;
+    
+  }
+  th{
+    width:10%;
+  }
+  td{
+    width: 10%;
+  }

@@ -1,0 +1,34 @@
+<!-- Write Jquery Program for Disable/enable the form submit button&Blink the text. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disable/Enable Submit Button & Blinking Text</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="cookies.js"></script>
+    <link rel="stylesheet" href="cookies.css">
+</head>
+<body>
+    <div class="container">
+        <form id="myForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <button type="submit" id="submitBtn" disabled>Submit</button>
+        </form>
+
+        <p id="blinking-text">This text is blinking!</p>
+
+        <button id="enableBtn">Enable Submit Button</button>
+        <button id="disableBtn">Disable Submit Button</button>
+    </div>
+
+    
+   
+</body>
+</html>
+

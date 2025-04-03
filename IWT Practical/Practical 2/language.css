@@ -1,0 +1,26 @@
+*{
+    background-color: bisque;
+    
+    font-size:large;
+}
+H1{
+    text-align: center;
+    color: rgb(20, 14, 6);
+    background-color: hsla(1, 100%, 50%, 0.892);
+    font-size: 150%;font-style: italic;
+    
+}
+h2{
+    color:#000000;
+    background-color: rgb(135, 199, 40);
+    font-size: 150%;
+}
+h3{
+    color: #000709;
+    background-color: #e97d0b;  
+    font-style: italic;
+
+}
+H4{
+    background-color: blanchedalmond;
+}
