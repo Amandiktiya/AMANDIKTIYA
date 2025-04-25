@@ -1,30 +1,23 @@
-<!-- Write Jquery Program for Count the number of milliseconds between the two
-click events on a paragraph
-9. 
-10.
-12. 
-11. Write a JSP code to manipulate cookies
-13. Write a JSP code to upload data from client side.
-14. Write a program to check how many users have visited a website. Use
-Application object.
-15. Write a Code in Java Script to count number of times you move over a link or
-record. -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milliseconds Between Clicks</title>
-    <link rel="stylesheet" href="countnumber.css">
-    <script src="countnumber.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>Click Time Difference</title>
 </head>
 <body>
-    <div class="container">
-        <p id="click-paragraph">Click me to start counting the time</p>
-        <div id="output"></div>
-    </div>
-   
+<p id="text" style="cursor:pointer; background:yellow; padding:15px;">
+MS Dhoni, India's legendary captain, led the team to World Cup victories in 2007 and 2011. Known for his calmness and finishing skills, he also guided CSK to multiple IPL titles. He retired in 2020 but remains an inspiration. MS Dhoni holds the honorary rank of Lieutenant Colonel in the Parachute Regiment of the Indian Territorial Army. He was awarded this rank in 2011, recognizing his contributions to cricket and leadership. In 2007, Dhoni was appointed captain of the captain of the Indian team and served as the captain of all formats from 2008. He captained the Indian team in 332 matches including 200 ODIs and was one of the most prolific and successful captains of all time.
+</p>
+<p id="result"></p>
+<script>
+let firstClick = 0;
+document.getElementById("text").onclick = function() { let now = Date.now();
+if (firstClick === 0) { firstClick = now;
+document.getElementById("result").innerText = "First click done. Click again!";
+} else {
+let diff = now - firstClick;
+document.getElementById("result").innerText = "Time difference: " + diff + " ms"; firstClick = 0;
+}
+};
+</script>
 </body>
 </html>
