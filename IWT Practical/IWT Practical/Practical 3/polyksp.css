@@ -1,0 +1,39 @@
+h1{
+    text-align: center;
+    color: rgb(7, 136, 136);
+    background-color: bisque;
+    
+}
+h2{
+    text-align: center;
+}
+body{
+  
+}
+img{
+    border-radius: 50%;
+    border-color: rgb(121, 113, 113);
+    border-style: double;
+    border-width: 0.19cm;
+
+}
+hr{
+    border-width: 0.03cm;
+    border-color: black;
+}
+
+#aman{
+    background-color: rgb(203, 190, 174);
+}
+#am{
+    background-color: rgb(158, 184, 206);
+}
+#a{
+    background-color: rgb(129, 185, 235);
+}
+#b{
+    background-color: rgb(172, 202, 229);
+}
+#c{
+    background-color: rgb(203, 222, 94);
+}
