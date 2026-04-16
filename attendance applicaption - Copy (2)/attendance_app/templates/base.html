@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ seo.title }}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{{ seo.description }}{% endblock %}">
+    <meta name="keywords" content="{{ seo.keywords }}">
+    <meta name="robots" content="{% block meta_robots %}{{ seo.robots }}{% endblock %}">
+    <link rel="canonical" href="{% block canonical_url %}{{ seo.canonical_url }}{% endblock %}">
+    <meta property="og:site_name" content="{{ site_name }}">
+    <meta property="og:title" content="{% block og_title %}{{ seo.title }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ seo.description }}{% endblock %}">
+    <meta property="og:type" content="{{ seo.og_type }}">
+    <meta property="og:url" content="{{ seo.canonical_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ seo.title }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ seo.description }}{% endblock %}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div>
+            <p class="eyebrow">Attendance Management System</p>
+            <p class="brand-title"><a href="{{ url_for('main.home') }}">Attendance Hub</a></p>
+        </div>
+        <nav>
+            <a href="{{ url_for('main.home') }}">Home</a>
+            {% if current_user %}
+                <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('main.applications') }}">Applications</a>
+                <a href="{{ url_for('main.attendance_report') }}">Reports</a>
+                {% if current_user['role'] in ['admin', 'faculty'] %}
+                    <a href="{{ url_for('main.approvals') }}">Approvals{% if pending_count %} ({{ pending_count }}){% endif %}</a>
+                {% endif %}
+                {% if current_user['role'] in ['admin', 'faculty'] %}
+                    <a href="{{ url_for('main.attendance') }}">Mark Attendance</a>
+                    <a href="{{ url_for('main.add_student') }}">Add Student</a>
+                {% endif %}
+                {% if current_user['role'] == 'admin' %}
+                    <a href="{{ url_for('main.add_faculty') }}">Add Faculty</a>
+                {% endif %}
+                <a href="{{ url_for('main.logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('main.login') }}">Login</a>
+                <a href="{{ url_for('main.student_register') }}">Student Sign Up</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="page-shell">
+        <a class="skip-link" href="#main-content">Skip to content</a>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <section class="flash-stack">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </section>
+            {% endif %}
+        {% endwith %}
+
+        <div id="main-content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</body>
+</html>

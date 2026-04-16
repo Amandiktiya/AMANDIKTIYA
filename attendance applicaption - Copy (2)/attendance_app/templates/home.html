@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Attendance Hub | Smart Attendance Management for Schools and Colleges{% endblock %}
+{% block meta_description %}Manage student attendance, edit approvals, applications, and downloadable reports with Attendance Hub for schools, colleges, and institutions.{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Admin, Faculty, Student</p>
+        <h1>Daily attendance, student profiles, approvals, aur reports ek hi dashboard me.</h1>
+        <p class="lead">
+            Attendance Hub schools, colleges, aur training institutions ke liye bana hua attendance management platform hai
+            jahan admin, faculty, aur students alag-alag role ke saath secure workflow me kaam kar sakte hain.
+        </p>
+        <div class="actions">
+            <a class="btn primary" href="{{ url_for('main.login') }}">Login</a>
+            <a class="btn secondary" href="{{ url_for('main.student_register') }}">Student Sign Up</a>
+        </div>
+    </div>
+    <div class="card info-card">
+        <h2>Why institutions use it</h2>
+        <ul class="feature-list">
+            <li>Role-based access for admin, faculty, and student users</li>
+            <li>Attendance marking with date filters and branch-level scope</li>
+            <li>Profile update approvals with review history</li>
+            <li>Excel attendance export for records and audits</li>
+        </ul>
+    </div>
+</section>
+
+<section class="card content-card">
+    <h2>Attendance software that keeps academic records organized</h2>
+    <p class="muted">
+        Is portal me student registration, profile management, attendance reporting, application tracking,
+        aur review workflows ko ek structured system me rakha gaya hai. Ye setup college departments,
+        school teams, aur coaching institutions ke liye useful hai jahan branch ya institution-wise access control chahiye hota hai.
+    </p>
+</section>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Login | Attendance Hub{% endblock %}
+{% block meta_description %}Login to Attendance Hub as admin, faculty, or student to access attendance records, approvals, applications, and reports.{% endblock %}
+
+{% block content %}
+<section class="card form-card">
+    <h1>Login</h1>
+    <p class="muted">Pehle role choose karein, phir batayein ki app ko kis institution type ke liye use kar rahe hain.</p>
+    <form method="post" class="grid-form" id="login-form">
+        <label>
+            Login Type
+            <select name="role" id="login-role" required>
+                <option value="admin">Admin</option>
+                <option value="faculty">Faculty</option>
+                <option value="student">Student</option>
+            </select>
+        </label>
+        <label>
+            Use Base
+            <select name="institution_type" id="institution-type">
+                <option value="">Select Type</option>
+                {% for value, label in institution_options %}
+                    <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label id="institution-name-group">
+            College / School / Institution Name
+            <input type="text" name="institution_name" id="institution-name" list="institution-list">
+            <datalist id="institution-list">
+                {% for name in faculty_institutions %}
+                    <option value="{{ name }}"></option>
+                {% endfor %}
+                {% for name in student_institutions %}
+                    <option value="{{ name }}"></option>
+                {% endfor %}
+            </datalist>
+        </label>
+        <label id="branch-group">
+            Faculty Branch / Department
+            <input type="text" name="branch" id="login-branch">
+        </label>
+        <label>
+            Email (Admin/Faculty) or Roll Number / Registration Number / Email (Student)
+            <input type="text" name="identifier" required>
+        </label>
+        <label>
+            Password
+            <input type="password" name="password" required>
+        </label>
+        <button class="btn primary" type="submit">Login</button>
+    </form>
+</section>
+
+<script>
+    const roleSelect = document.getElementById("login-role");
+    const institutionTypeSelect = document.getElementById("institution-type");
+    const institutionNameGroup = document.getElementById("institution-name-group");
+    const institutionNameInput = document.getElementById("institution-name");
+    const branchGroup = document.getElementById("branch-group");
+    const branchInput = document.getElementById("login-branch");
+    const schoolCollegeTypes = new Set({{ school_college_types|tojson }});
+
+    function syncInstitutionField() {
+        const role = roleSelect.value;
+        const institutionType = institutionTypeSelect.value;
+        const needsInstitutionType = role === "faculty";
+        const needsInstitution = role !== "admin" && institutionType && (role === "student" ? institutionType !== "other_institution" : schoolCollegeTypes.has(institutionType));
+        const needsBranch = role === "faculty";
+        institutionTypeSelect.required = needsInstitutionType;
+        institutionNameGroup.style.display = needsInstitution ? "flex" : "none";
+        institutionNameInput.required = needsInstitution;
+        branchGroup.style.display = needsBranch ? "flex" : "none";
+        branchInput.required = needsBranch;
+        if (!needsInstitution) {
+            institutionNameInput.value = "";
+        }
+        if (!needsBranch) {
+            branchInput.value = "";
+        }
+    }
+
+    roleSelect.addEventListener("change", syncInstitutionField);
+    institutionTypeSelect.addEventListener("change", syncInstitutionField);
+    syncInstitutionField();
+</script>
+{% endblock %}
